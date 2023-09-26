@@ -8,6 +8,20 @@ struct node
 	struct node *next;
 };
 
+struct queue
+{
+	struct node *head;
+	struct node *tail;
+};
+
+void enqueue(struct queue *q, int data){
+	struct node *new_node = malloc(sizeof(struct node));
+	new_node->data = data;
+	new_node->next = NULL;
+}
+
+
+
 
 
 int main()
