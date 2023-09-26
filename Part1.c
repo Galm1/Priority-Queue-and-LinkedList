@@ -50,7 +50,28 @@ int dequeue(struct queue *q){
 
 int main()
 {
-	struct queue q;
+	int x = 0;
+	printf("Enter the length of the queue: ");
+	scanf("%d", &x);
+	
+	int tempArr1[x];
+	int tempArr2[x];
+	
+	for (int i = 0; i < x; i++){
+		printf("\nEnter element %d: ", i + 1);
+		scanf("%d", &(tempArr1[i]));
+		printf("\nEnter priority of element %d: ", i + 1);
+		scanf("%d", &(tempArr2[i]));
+	}
+	
+	for (int i = 0; i < x; i++){
+		printf("\n\nelement %d: %d", i + 1, tempArr1[i]);
+		printf("\n\nelement priority of element %d: %d", i + 1, tempArr2[i]);
+	}
+	
+	
+	
+	/*struct queue q;
 	q.head = NULL;
 	q.tail = NULL;
 	enqueue(&q, 1);
@@ -59,5 +80,5 @@ int main()
 	printf("%d\n", dequeue(&q));
 	printf("%d\n", dequeue(&q));
 	printf("%d\n", dequeue(&q));
-	return 0;
+	return 0;*/
 }
