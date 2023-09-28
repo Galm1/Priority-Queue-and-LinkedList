@@ -4,6 +4,7 @@
 struct node //building a node struct.
 {
 	int data;
+	int priority;
 	struct node *next;
 };
 
@@ -13,9 +14,10 @@ struct queue //building a struct for queue.
 	struct node *tail;
 };
 
-void enqueue(struct queue *q, int data){ //enqueue takes a 'queue' struct pointer "q" and data.
+void enqueue(struct queue *q, int data, int priority){ //enqueue takes a 'queue' struct pointer "q" and data.
 	struct node *new_node = malloc(sizeof(struct node)); //allocate needed memory for node new_node.
 	new_node->data = data; //set the new_node data and set its next to point to NULL, telling us it is last element.
+	new_node->priority = priority;
 	new_node->next = NULL;
 	
 	if (q->tail == NULL){
@@ -43,7 +45,19 @@ int dequeue(struct queue *q){
 	return data;
 }
 
-
+void display(struct queue *q){
+	if (q->head == NULL) {
+		printf("queue is empty\n");
+		return;
+	}
+	
+	printf("Priority Queue: \n");
+	struct node *x = q->head;
+	while (x != NULL){
+		printf("(%d , %d)\n", x->data, x->priority);
+		x = x->next;
+	}
+}
 
 
 
@@ -59,7 +73,7 @@ int main()
 	
 	int tempArr1[x];
 	int tempArr2[x];
-	tempArr2[x+1] = 9999;
+	tempArr2[x] = 9999;
 	
 	for (int i = 0; i < x; i++){
 		printf("\nEnter element %d: ", i + 1);
@@ -69,18 +83,13 @@ int main()
 	}
 
 	
- 	/*for (int i = 0, y = 0; i < x; i++){
-		if (tempArr2[i+1] != 0101){
-			return 0;
-		}
-	}*/
 	
 	for (int i = 0; i < x; i++){
 		printf("\n\nElement %d: %d", (i + 1), tempArr1[i]);
 		printf("\n\nPriority of element %d: %d", (i + 1), tempArr2[i]);
 	}
 	
-	printf("\nElement 'x+1' should be 9999, This is what it is: %d", tempArr2[(x+1)]);
+	printf("\nElement 'x+1' should be 9999, This is what it is: %d", tempArr2[x]);
 	
 	
 	
