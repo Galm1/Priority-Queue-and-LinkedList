@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node //building a node struct.
+struct node //building a node struct with data and priority.
 {
 	int data;
 	int priority;
@@ -16,7 +16,7 @@ struct queue //building a struct for queue.
 
 void enqueue(struct queue *q, int data, int priority){ //enqueue takes a 'queue' struct pointer "q" and data.
 	struct node *new_node = malloc(sizeof(struct node)); //allocate needed memory for node new_node.
-	new_node->data = data; //set the new_node data and set its next to point to NULL, telling us it is last element.
+	new_node->data = data; //set the new_node data/priority and set its next to point to NULL, telling us it is last element.
 	new_node->priority = priority;
 	new_node->next = NULL;
 	
@@ -72,16 +72,26 @@ int main()
 	scanf("%d", &x);
 	
 	
-	/*for (int i = 0; i < x; i++){
+
+	for (int i = 0, data, prio; i < x; i++){ //no longer using array so using &
 		printf("\nEnter element %d: ", i + 1);
-		scanf("%d", &(tempArr1[i]));
-		printf("\nEnter priority of element %d (only 1 - 5): ", i + 1);
-		scanf("%d", &(tempArr2[i]));
+		scanf("%d", &data);
+		printf("\nEnter priority of element %d (only 1 - 5): ", i + 1); //making sure the prio is only 1-5
+		scanf("%d", &prio);
+		
+		if (prio < 1 || prio > 5){
+			printf("Enter a priorty ONLY 1 - 5.\n");
+			i--; //so user can reenter
+			continue; // jump out and run loop again
+		}
+		
+		enqueue(&pq, data, prio);
 	}
+
 
 	
 	
-	for (int i = 0; i < x; i++){
+	/*for (int i = 0; i < x; i++){
 		printf("\n\nElement %d: %d", (i + 1), tempArr1[i]);
 		printf("\n\nPriority of element %d: %d", (i + 1), tempArr2[i]);
 	}
