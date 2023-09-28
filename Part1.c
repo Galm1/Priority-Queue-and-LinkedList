@@ -64,21 +64,18 @@ void display(struct queue *q){
 int main()
 {
 	int x = 0;
-/* 	int tempArr1[x];
-	int tempArr2[x];
-	tempArr2[x+1] = 0101; */
+	struct queue pq;
+	pq.head = NULL;
+	pq.tail = NULL;
 	
 	printf("Enter the length of the queue: ");
 	scanf("%d", &x);
 	
-	int tempArr1[x];
-	int tempArr2[x];
-	tempArr2[x] = 9999;
 	
-	for (int i = 0; i < x; i++){
+	/*for (int i = 0; i < x; i++){
 		printf("\nEnter element %d: ", i + 1);
 		scanf("%d", &(tempArr1[i]));
-		printf("\nEnter priority of element %d: ", i + 1);
+		printf("\nEnter priority of element %d (only 1 - 5): ", i + 1);
 		scanf("%d", &(tempArr2[i]));
 	}
 
@@ -89,18 +86,6 @@ int main()
 		printf("\n\nPriority of element %d: %d", (i + 1), tempArr2[i]);
 	}
 	
-	printf("\nElement 'x+1' should be 9999, This is what it is: %d", tempArr2[x]);
+	printf("\nElement 'x+1' should be 9999, This is what it is: %d", tempArr2[x]);*/
 	
-	
-	
-	/*struct queue q;
-	q.head = NULL;
-	q.tail = NULL;
-	enqueue(&q, 1);
-	enqueue(&q, 2);
-	enqueue(&q, 3);
-	printf("%d\n", dequeue(&q));
-	printf("%d\n", dequeue(&q));
-	printf("%d\n", dequeue(&q));
-	return 0;*/
 }
