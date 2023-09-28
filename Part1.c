@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 5  //is this nessasary? I dont know yet. We only want 5 user inputs, so maybe.
 
 struct node //building a node struct.
 {
@@ -51,11 +50,16 @@ int dequeue(struct queue *q){
 int main()
 {
 	int x = 0;
+/* 	int tempArr1[x];
+	int tempArr2[x];
+	tempArr2[x+1] = 0101; */
+	
 	printf("Enter the length of the queue: ");
 	scanf("%d", &x);
 	
 	int tempArr1[x];
 	int tempArr2[x];
+	tempArr2[x+1] = 9999;
 	
 	for (int i = 0; i < x; i++){
 		printf("\nEnter element %d: ", i + 1);
@@ -63,11 +67,20 @@ int main()
 		printf("\nEnter priority of element %d: ", i + 1);
 		scanf("%d", &(tempArr2[i]));
 	}
+
+	
+ 	/*for (int i = 0, y = 0; i < x; i++){
+		if (tempArr2[i+1] != 0101){
+			return 0;
+		}
+	}*/
 	
 	for (int i = 0; i < x; i++){
-		printf("\n\nelement %d: %d", i + 1, tempArr1[i]);
-		printf("\n\nelement priority of element %d: %d", i + 1, tempArr2[i]);
+		printf("\n\nElement %d: %d", (i + 1), tempArr1[i]);
+		printf("\n\nPriority of element %d: %d", (i + 1), tempArr2[i]);
 	}
+	
+	printf("\nElement 'x+1' should be 9999, This is what it is: %d", tempArr2[(x+1)]);
 	
 	
 	
