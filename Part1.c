@@ -89,7 +89,45 @@ int main()
 	}
 
 
+    for (int i = 0; i < x - 1; i++) { //sort with prio
+        struct node *current = pq.head;
+        struct node *next_node = current->next;
+
+        while (next_node != NULL) { //swap the data<->prio
+            if (current->priority > next_node->priority) { //current takes head from above and compares to prio of next
+                int temp_data = current->data; //set both current node to temp node to use for later
+                int temp_priority = current->priority;
+                current->data = next_node->data; //take next and set to current
+                current->priority = next_node->priority;
+                next_node->data = temp_data; //next node takes prio node daata and prio
+                next_node->priority = temp_priority;
+            }
+
+            current = next_node;
+            next_node = current->next;
+        }
+    }
 	
+	display(&pq);
+	
+	char choice;
+	
+    printf("Dequeue an element (y/n)? "); // ask user for a dequeue then do so.
+    scanf(" %c", &choice);
+
+    if (choice == 'y' || choice == 'Y') {
+        int dequeued = dequeue(&pq);
+        if (dequeued != -1) {
+            printf("Dequeued: Data = %d\n", dequeued);
+        }
+    }
+
+
+    while (pq.head != NULL) { //memory cleaning
+        dequeue(&pq);
+    }
+
+    return 0;
 	
 	/*for (int i = 0; i < x; i++){
 		printf("\n\nElement %d: %d", (i + 1), tempArr1[i]);
