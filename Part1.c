@@ -110,9 +110,11 @@ int main()
 	
 	display(&pq);
 	
+	
+	for (int i = 0; i < x; i++){
 	char choice;
 	
-    printf("Dequeue an element (y/n)? "); // ask user for a dequeue then do so.
+    printf("Dequeue an element (y for yes, n to exit)? "); // ask user for a dequeue then do so.
     scanf(" %c", &choice);
 
     if (choice == 'y' || choice == 'Y') {
@@ -120,7 +122,12 @@ int main()
         if (dequeued != -1) {
             printf("Dequeued: Data = %d\n", dequeued);
         }
-    }
+    } else return 0;
+	
+	printf("\nQueue after the Dequeue: \n");
+	display(&pq);
+	
+	}
 
 
     while (pq.head != NULL) { //memory cleaning
